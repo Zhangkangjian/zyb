@@ -1,0 +1,4 @@
+<view>
+  <input class='setUnit' bindinput='setUnit' value='{{unitname}}'></input>
+  <button class='saveUnit' bindtap='saveUnit'>保存</button>
+</view>

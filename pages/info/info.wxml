@@ -1,0 +1,205 @@
+<swiper class='swiper' bindchange='animateEnd' current="{{swipercurrent}}" duration="300">
+  <swiper-item wx:for="{{pageArray.samplePageList}}" wx:key="i" wx:for-index="i" wx:for-item="res">
+    <scroll-view scroll-y="{{scrolly}}" style="height:{{height}}; background:{{pageArray.sampleColorScheme.sampleBgColor}}">
+      <view wx:if="{{i==0}}" class='fengmian'><image mode="widthFix" src='{{pageArray.sample.coverGalleryUrl}}'></image></view>
+      <view wx:if="{{i==0}}" class='fengmian_bot' style="background:{{pageArray.sampleColorScheme.buBgColor}}"><text style='color:{{pageArray.sampleColorScheme.buColor}}'>{{pageArray.sample.companyName}}</text></view>      
+      <view class='wrap' wx:for="{{res.samplePageGroupList}}"  wx:key="index" wx:for-index="index" wx:for-item="resolve">
+        <view wx:if="{{resolve.samplePageGroup.samplePageGroupTypeId==0}}"><!--标题-->
+          <view wx:for="{{resolve.samplePageGroupContentList}}" wx:key="c" wx:for-index="c" wx:for-item="info">
+            <text class='descriptionTitle'>{{info.description}}</text>
+          </view>
+        </view>
+
+        <view wx:if="{{resolve.samplePageGroup.samplePageGroupTypeId==1}}">
+          <view wx:for="{{resolve.samplePageGroupContentList}}" wx:key="c" wx:for-index="c" wx:for-item="info">
+            <text class='description'>{{info.description}}</text>
+          </view>
+        </view>
+
+        <view wx:if="{{resolve.samplePageGroup.samplePageGroupTypeId==2}}">
+          <view class='ImageBox'>
+            <view wx:for="{{resolve.samplePageGroupContentList}}" wx:key="c" wx:for-index="c" wx:for-item="info" class='{{c==0?"activeImage":"itemImage"}}'>
+              <image wx:if="{{!info.mediaType}}" src='{{info.galleryUrl}}' bindtap='readyImage' data-index="{{c}}" data-html="{{resolve.samplePageGroupContentList}}" data-show="{{info}}" mode="widthFix" class='galleryUrl'></image>               
+                <view wx:if="{{info.mediaType=='VIDEO'}}" class="videoBox">
+                   <view class='z'><image data-oldurl="{{info.galleryUrl}}" bindtap="html" mode="widthFix" src='../img/videoz.png'></image></view>
+                   <image src='{{info.galleryUrls}}' data-oldurl="{{info.galleryUrl}}" bindtap="html" mode="widthFix" class='galleryUrl videoImage'></image> 
+                </view>
+            </view>
+          </view>
+        </view>
+
+        <view wx:if="{{resolve.samplePageGroup.samplePageGroupTypeId==3}}">
+
+          <view class='flex-row' style='border-right:1px solid {{pageArray.sampleColorScheme.pTitleBgColor}}; border-bottom:1px solid {{pageArray.sampleColorScheme.pTitleBgColor}};'>
+            <view class='flex-cell' style='width:50%; background:{{pageArray.sampleColorScheme.pTitleBgColor}}; color:{{pageArray.sampleColorScheme.pTitleWordColor}}; border-left:1px solid {{pageArray.sampleColorScheme.pTitleBgColor}};'><text>规格 \r\n Description</text></view>
+            <view class='flex-cell' style='width:20%; background:{{pageArray.sampleColorScheme.pTitleBgColor}}; color:{{pageArray.sampleColorScheme.pTitleWordColor}}; border-left:1px solid {{pageArray.sampleColorScheme.pTitleBgColor}};'><text>单位 \r\n Unit</text></view>
+            <view class='flex-cell' style='width:30%; background:{{pageArray.sampleColorScheme.pTitleBgColor}}; color:{{pageArray.sampleColorScheme.pTitleWordColor}}; border-left:1px solid {{pageArray.sampleColorScheme.pTitleBgColor}};'><text>参数 \r\n Parameter</text></view>
+          </view>
+
+          <view class='flex-row' style='border-right:1px solid {{pageArray.sampleColorScheme.pTitleBgColor}}; border-bottom:1px solid {{pageArray.sampleColorScheme.pTitleBgColor}};' wx:for="{{resolve.samplePageGroupContentList}}" wx:key="c" wx:for-index="c" wx:for-item="info">
+            <view class='flex-cell' style='width:50%; background:{{pageArray.sampleColorScheme.pLintBgColor}}; color:{{pageArray.sampleColorScheme.pLineWordColor}}; border-left:1px solid {{pageArray.sampleColorScheme.pTitleBgColor}};'><text>{{info.name}}</text></view>
+            <view class='flex-cell' style='width:20%; background:{{pageArray.sampleColorScheme.pLintBgColor}}; color:{{pageArray.sampleColorScheme.pLineWordColor}}; border-left:1px solid {{pageArray.sampleColorScheme.pTitleBgColor}};'><text>{{info.unit}}</text></view>
+            <view class='flex-cell' style='width:30%; background:{{pageArray.sampleColorScheme.pLintBgColor}}; color:{{pageArray.sampleColorScheme.pLineWordColor}}; border-left:1px solid {{pageArray.sampleColorScheme.pTitleBgColor}};'>
+              <text wx:if="{{info.valueFrom}}">{{info.valueFrom}}</text>
+              <text wx:if="{{info.valueFrom&&info.valueTo}}">-</text>
+              <text wx:if="{{info.valueTo}}">{{info.valueTo}}</text>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </scroll-view>
+  </swiper-item>
+</swiper>
+<!-- <view class='aa'></view> -->
+<view class='menu' wx:if="{{menu.state}}" bindtap='startmenu'><text>{{menu.text}}/{{menu.textLen}}</text></view>
+<view class='business' bindtap='business' style='background:rgba({{business.style}})'><text>{{business.text}}</text></view>
+
+
+<view class='menuArraybg' catch:tap='closemenuArraybg' wx:if="{{menuBox}}">
+  <view class='menuArray'>
+    <scroll-view  scroll-y="{{scrolly}}" style="height:90%">
+      <view class='itemwrap' wx:for="{{oldpageArray.samplePageList}}" wx:key="i" wx:for-index="i" wx:for-item="res">
+        <view catch:tap='tabarList' data-touch='{{res.samplePage.isSection==0?false:true}}' data-index="{{i}}" class='itemlist {{res.samplePage.isSection==0?"itemtitle":"itemcont"}} {{i==menu.text?"active":""}}'>{{res.samplePage.samplePageName}}</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<view class='flexbutton'>
+  <button style='border-right:1px solid #fff' data-type="{{sctxt}}" bindtap='soucangBtn'>{{sctxt}}</button>
+  <button open-type="share">分享</button>
+</view>
+
+<view class='homes' bindtap='Homes' wx:if="{{home}}">更多</view>
+
+<view class='businessBG' bindtap='closeBG' wx:if="{{business.businessBG}}">
+  <view class='businessBox' catch:tap="stop">
+
+    <view class='businessBoxTitle'>
+      <view class='businessBoxTitle_text'>{{business.text}}</view>
+    </view><!--title-->
+    <view class='businessBoxsub'>绑定的名片，可以和样本一同分享出去</view>
+
+    <view class='businessBoxCont {{business.active?"businessBoxCont_active":"businessBoxCont_flex"}}' bindtap="showEdibusiness">
+       <!--空白-->
+       <image src='../img/textImg.png' catch:tap="showContent" mode="widthFix" class='flex_image' wx:if="{{!business.active}}"></image>
+       <text class='flex_text' catch:tap="showContent" wx:if="{{!business.active}}">您还没有创建名片哦~</text>
+       <view class='createBtn' catch:tap="showContent" wx:if="{{!business.active}}">+创建名片</view>
+       <!--空白End-->
+
+       <!--样式-->
+        <view class='headerflex' wx:if="{{business.active}}">
+          <view class='headerflex_image'><image bindtap='ImageZoom' data-src="{{business.info.headUrl}}" src='https://www.fantiansmart.cn/{{business.info.headUrl}}'></image></view>
+          <view class='headerflex_text'>
+            <text class='name'>{{business.info.name}}</text>
+            <text class='companyName'>{{business.info.companyName}}</text>
+            <text class='positions'>{{business.info.position}}</text>
+          </view>
+        </view>
+        <view class='address flex' wx:if="{{business.active&&business.info.address}}">
+          <view><text class='title'>地址：</text></view>
+          <view><text>{{business.info.address}}</text></view>
+        </view>
+
+        <view class='flex' wx:if="{{business.active}}">
+          <view class='cellPhone' wx:if="{{business.info.cellPhone.length}}" bindtap='telphone' data-tel="{{business.info.cellPhone}}">
+            <text class='title'>手机：</text>
+            <text class='telphone'>{{business.info.cellPhone}}</text>
+          </view>
+          <view class='cellPhone' wx:if="{{business.info.fixedTelephone.length}}" bindtap='telphone' data-tel="{{business.info.fixedTelephone}}">
+            <text class='title'>固话：</text>
+            <text class='telphone'>{{business.info.fixedTelephone}}</text>
+          </view>
+        </view>
+
+        <view class='flex' wx:if="{{business.active}}">
+          <view class='cellPhone' wx:if="{{business.info.fax.length}}">
+            <text class='title'>传真：</text>
+            <text>{{business.info.fax}}</text>
+          </view>
+          <view class='cellPhone' wx:if="{{business.info.zipCode.length}}">
+            <text class='title'>邮编：</text>
+            <text>{{business.info.zipCode}}</text>
+          </view>
+        </view>
+
+        <view class='eamil flex' wx:if="{{business.active&&business.info.mailbox.length}}">
+          <view><text class='title'>邮箱：</text></view>
+          <view><text>{{business.info.mailbox}}</text></view>
+        </view>
+
+        <view class='eamil flex' wx:if="{{business.active&&business.info.weChatNumber.length}}">
+          <view><text class='title'>微信号：</text></view>
+          <view><text>{{business.info.weChatNumber}}</text></view>
+        </view>
+
+        <view class='edi' wx:if="{{business.edi}}" bindtap="showContent">
+          <image src='../img/sc_off.png'></image>
+        </view>
+       <!--样式End-->
+    </view>
+  </view><!--box-->
+  <!--按钮-->
+  <button class='btn' data-type="{{business.buttonType}}" catch:tap="clickbtn">{{business.buttonText}}</button>
+  <!--按钮-->
+</view><!--businessBG-->
+
+<view class='businessCont' wx:if="{{business.showContext}}">
+ <scroll-view scroll-y="{{scrolly}}" style="height:{{height}}">
+    <view class='businessCont_title'>主要信息</view>
+    <view class='flex businessCont_wrap'>
+      <view><text>姓名</text><text class='red'>*</text></view>
+      <input type='text' bindinput='output' data-name="name" maxlength="8" placeholder="请填写姓名" value='{{business.info.name}}'></input>
+    </view>
+    <view class='flex businessCont_wrap'>
+      <view><text>公司名称</text><text class='red'>*</text></view>
+      <input type='text' bindinput='output' data-name="companyName" maxlength="20" placeholder="请填写公司名称" value='{{business.info.companyName}}'></input>
+    </view>
+    <view class='flex businessCont_wrap'>
+      <view><text>职位</text><text class='red'>*</text></view>
+      <input type='text' bindinput='output' maxlength="20" data-name="position" placeholder="请填写职位" value='{{business.info.position}}'></input>
+    </view>
+    <view class='flex businessCont_wrap'>
+      <view><text>地址</text><text class='red'>*</text></view>
+      <input type='text' maxlength="50" bindinput='output' data-name="address" placeholder="请填写地址" value='{{business.info.address}}'></input>
+    </view>
+    <view class='flex businessCont_wrap'>
+      <view><text>手机</text><text class='red'>*</text></view>
+      <input type='number' maxlength="11" bindinput='output' data-name="cellPhone" placeholder="请填写手机号码" value='{{business.info.cellPhone}}'></input>
+    </view>
+    <view class='flex businessCont_wrap'>
+      <view><text>固定电话</text><text class='red'>*</text></view>
+      <input type='number'  maxlength="15" bindinput='output' data-name="fixedTelephone" placeholder="请填写固定电话" value='{{business.info.fixedTelephone}}'></input>
+    </view>
+    <view class='businessCont_title'>其他信息</view>
+    <view class='flex businessCont_wrap'>
+      <view><text>头像</text></view>
+      <view class='touxiangBox' bindtap='touxiangBox'>
+        <image src='https://www.fantiansmart.cn/{{business.info.headUrl}}'></image>
+      </view>
+    </view>
+    <view class='flex businessCont_wrap'>
+      <view><text>传真</text></view>
+      <input type='number'  maxlength="15" bindinput='output' data-name="fax" placeholder="请填写传真号" value='{{business.info.fax}}'></input>
+    </view>
+    <view class='flex businessCont_wrap'>
+      <view><text>邮编</text></view>
+      <input type='number'  maxlength="10" bindinput='output' data-name="zipCode" placeholder="请填写邮编" value='{{business.info.zipCode}}'></input>
+    </view>
+    <view class='flex businessCont_wrap'>
+      <view><text>邮箱</text></view>
+      <input type='text'  maxlength="50" bindinput='output' data-name="mailbox" placeholder="请填写邮箱" value='{{business.info.mailbox}}'></input>
+    </view>
+    <view class='flex businessCont_wrap'>
+      <view><text>微信号</text></view>
+      <input type='text'  maxlength="40" bindinput='output' data-name="weChatNumber" placeholder="请填写微信号" value='{{business.info.weChatNumber}}'></input>
+    </view>
+ </scroll-view>
+ <view class='buttonWrap'>
+    <view class='bflex' bindtap='closes'>取消</view>
+    <view class='bflex reds' bindtap='send'>确认</view>
+ </view>
+</view>
+<view class='next' wx:if='{{next}}'></view>
+<view class='prev' wx:if='{{prev}}'></view>

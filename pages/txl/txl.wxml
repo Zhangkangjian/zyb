@@ -1,0 +1,47 @@
+<view class='lxrBox'>
+  <view class='SearchBox'>
+    <view class='SearchInput' style='width:{{style.width}}'>
+      <input class='text' confirm-type='search' placeholder='搜索' bindconfirm='searchBtn' bindfocus='searchEnd' bindinput='searchTxt' value="{{InputName}}"></input>
+      <view class='Icon'><image src='../img/search.png'></image></view>
+      <icon class='close' type='clear' size='18' wx:if="{{close}}" bindtouchstart='emy'></icon>
+    </view>
+    <view class='end' wx:if="{{style.end}}"><text bindtap='searchClose'>取消</text></view>
+  </view>
+  <scroll-view style='height:{{height}}' scroll-y='true' bindscrolltolower='scrollLower' class='ListBox' scroll-into-view="{{toView}}">
+    <view class='Items' wx:for="{{sampleList}}" wx:key="i" wx:for-index="i" wx:for-item="res">
+      <image class="Items_image" src='{{res.galleryUrl}}' binderror="binderrorimg" data-errorimg="{{i}}" bindtap='ToInfo' data-sampleMasterId='{{res.sampleMasterId}}' data-fm='{{res.galleryUrl}}' data-pm='{{res.sampleName}}'></image>
+      <text class='company' bindtap='ToInfo' data-fm='{{res.galleryUrl}}' data-pm='{{res.sampleName}}' data-sampleMasterId='{{res.sampleMasterId}}'>{{res.companyname}}</text>
+      <view class='merber'>
+        <view class='merber-left' bindtap='listView' data-ownerSaId='{{res.ownerSaId}}'>
+          <image src='https://zhaoyangben.mep.cn{{res.saIconUrl}}'></image>
+          <text>{{res.nickName}}</text>
+        </view>
+        <view class='merber-right' bindtap='listView' data-ownerSaId='{{res.ownerSaId}}'>
+          <text>查看该用户全部样本 ></text>
+        </view>
+      </view>
+      <view class='operation'>
+        <text>浏览 {{res.readCount}}</text>
+        <text>收藏 {{res.subscriptionCount}}</text>
+      </view>
+      
+      <view  data-sampleMasterId='{{res.sampleMasterId}}' data-fm='{{res.old}}' data-companyname='{{res.companyname}}' data-sampleName='{{res.sampleName}}' class='ewm' catch:tap='ewm'><image src='../img/xcx16.png'></image></view>
+
+      <!-- <view class='scbtn'>
+        <image src='../img/sc_no.png' wx:if="{{!res.wxsubscription}}" catch:tap='wxsubscription' data-s="{{res.sampleMasterId}}" data-index="{{i}}" data-start="{{res.wxsubscription}}"></image>
+        <image src='../img/sc_off.png' wx:if="{{res.wxsubscription}}" catch:tap='wxsubscription' data-s="{{res.sampleMasterId}}" data-index="{{i}}" data-start="{{res.wxsubscription}}"></image>
+      </view> -->
+
+      <view class='title' bindtap='ToInfo' data-fm='{{res.galleryUrl}}' data-pm='{{res.sampleName}}' data-sampleMasterId='{{res.sampleMasterId}}'  wx:if='{{res.isDisplaySampleName==1}}'>
+        <text>{{res.sampleName}}</text>
+      </view>
+
+      <!-- <image src='../img/xcx15.png' wx:if="{{res.newSample}}" class='newIcon'></image> -->
+
+    </view><!--items-->
+     <view class='loader' wx:if='{{loader}}' wx:hide="{{!sampleList.length}}"><text>{{loadertext}}</text></view>
+     <view class='loader' wx:if='{{loadBottom}}'><text>没有更多了... </text></view>
+  </scroll-view>
+  
+  <canvas wx:show='{{canvas}}' class='canvas' canvas-id='canvas'></canvas>
+</view>

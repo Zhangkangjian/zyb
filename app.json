@@ -1,0 +1,38 @@
+{
+  "pages":[
+    "pages/txl/txl",
+    "pages/login/login",
+    "pages/myyb/myyb",
+    "pages/ceshi/ceshi",
+    "pages/Agreement/Agreement",
+    "pages/index/index",
+    "pages/unit/unit",
+    "pages/list/list",
+    "pages/video/video",
+    "pages/info/info"
+  ],
+  "window":{
+    "backgroundTextStyle":"white",
+    "navigationBarBackgroundColor": "#282a3f",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar":{
+    "color":"#848484",
+    "backgroundColor":"#fff",
+    "selectedColor": "#fe0000",
+    "list":[
+      {
+        "iconPath":"pages/img/tbar02.png",
+        "selectedIconPath": "pages/img/tbar02on.png",
+        "pagePath":"pages/txl/txl",
+        "text":"找样本"
+      },{
+        "iconPath": "pages/img/tbar01.png",
+        "selectedIconPath": "pages/img/tbar01on.png",
+        "pagePath": "pages/ceshi/ceshi",
+        "text": "更多"
+      }
+    ]
+  }
+}

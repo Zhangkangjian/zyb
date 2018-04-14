@@ -1,0 +1,3 @@
+page{background: #ebebeb;}
+.setUnit{ width: 100%; margin-top: 10rpx; height: 90rpx; line-height: 90rpx; color:#222; background: #fff; box-sizing: border-box; padding: 0px 25rpx;}
+.saveUnit{ background: #fe0000; color:#fff; margin: auto; margin-top: 25rpx; width: 90%;}

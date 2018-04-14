@@ -1,0 +1,18 @@
+page{ background: #fff;}
+input{ color: #fff;}
+.LoginBox{ width: 100%; height: 100%;}
+.logo{ width: 100%; display: flex; flex-direction: row; padding-bottom: 50rpx; padding-top: 106rpx; display: -webkit-flex; justify-content: center; font-size: 50rpx;}
+.logo image{ width: 353rpx; height: 205rpx;}
+.wrap{ width: 86%; padding: 0px 7%;}
+.wrap input{ height: 130rpx; color: #777; line-height: 130rpx; box-sizing: border-box; padding-left: 15%;}
+.InputBox{position: relative; background:#fff; border-bottom:1px solid #dadada; overflow: hidden; box-sizing: border-box; padding: 0px 20rpx;}
+.placeholder{ color:#777; font-size: 32rpx;}
+.yzmInput{ width: 68%; float: left;}
+.yzmbtn{ width: 32%; float:right; padding: 0px !important; font-size:28rpx; height: 70rpx; margin-top: 30rpx; line-height: 70rpx; background: none; color:#fe0000;}
+button::after{border: 0px}
+.Agreement{ color:#999; width: 80%; margin: auto; font-size:24rpx; padding-top:265rpx; text-align: center; line-height: 170%;}
+.Agreement_btn{ color:#222;}
+.btnLogin{ background: #fe0000; color:#fff; border-radius: 85rpx; margin-top: 85rpx;}
+.telIcon{ position:absolute; left:48rpx;top:45rpx;width:32rpx;height:49rpx;z-index:99;}
+.iconCode{ position:absolute; left:40rpx;top:52rpx;width:46rpx;height:33rpx;z-index:99;}
+.icongs{ position:absolute; left:40rpx;top:49rpx;width:45rpx;height:40rpx;z-index:99;}

@@ -1,0 +1,23 @@
+<view class='LoginBox'>
+   <view class='logo'>登录</view> 
+  <view class='wrap' style='margin-top:13%'>
+    <view class='InputBox'>
+      <input type='number' id='Tel' bindinput='InputName' value='{{inputCont.Tel}}' placeholder='请输入手机号' placeholder-class='placeholder' disabled='{{!style.isBtn}}'></input>
+      <image src='../img/xcx03.png' class='telIcon'></image>
+    </view>
+    <view class='InputBox'>
+      <input type='number' id='Code' bindinput='InputName' value='{{inputCont.Code}}' class='yzmInput' placeholder='请输入验证码' placeholder-class='placeholder'></input>
+      <button class='yzmbtn' data-style="{{style}}" bindtap='getCode'>{{style.name}}</button>
+      <image src='../img/xcx04.png' class='iconCode'></image>
+    </view>
+    <!-- <view class='InputBox'>
+      <input type='text' id='Name' bindinput='InputName' value='{{inputCont.Name}}' placeholder='请输入企业名称' placeholder-class='placeholder'></input>
+      <image src='../img/gs.png' class='icongs'></image>
+    </view> -->
+    <button bindtap='loginbtn' class='btnLogin'>确定</button>
+    <view class="Agreement">
+      <text>若您输入的手机号未注册，将会进入注册流程。注册即视为同意</text>
+      <text class='Agreement_btn' bindtap='xieyi'>《脉搏智造用户协议》</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,69 @@
+<view scroll-y='true' class='merberBox'>
+  <view class='merber_title'>
+    <view class='avatarUrl'>
+      <image src='{{userInfo.avatarUrl}}'></image>
+    </view>
+    <text>{{userInfo.nickName}}</text>
+  </view>
+  <view class='merber_cont'>
+   <view class='item-wrap'>
+      <view class='item-view' bindtap='merberLit' data-titleName='创建样本' data-index='101'>
+        <image src='../img/images/merberTop_01.png'></image>
+        <text>创建样本</text>
+      </view>
+      <view class='item-view' bindtap='merberLit' data-titleName='设计师' data-index='102'>
+        <image src='../img/images/merberTop_02.png'></image>
+        <text>设计师</text>
+      </view>
+      <view class='item-view' bindtap='merberLit' data-titleName='传播力量' data-index='103'>
+        <image src='../img/images/merberTop_03.png'></image>
+        <text>传播力量</text>
+      </view>
+      <view class='item-view' bindtap='merberLit' data-titleName='阅后分析' data-index='104'>
+        <image src='../img/images/merberTop_04.png'></image>
+        <text>阅后分析</text>
+      </view>
+   </view>
+   <view class='item-cont' hover-class='btn-hover' bindtap='myyb'>
+      <view class='item-cont-img'><image src='../img/images/Icon_01.png'></image></view>
+      <text class='item-cont-text'>我的收藏</text>
+      <view class='item-cont-icon'><image src='../img/rightIcon.png'></image></view>
+    </view>
+    <!-- <view class='item-cont' hover-class='btn-hover' bindtap='unit'>
+      <view class='item-cont-img'><image src='../img/images/Icon_02.png'></image></view>
+      <text class='item-cont-text'>企业名称</text>
+      <text class='item-cont-name'>{{unit}}</text>
+      <view class='item-cont-icon'><image src='../img/rightIcon.png'></image></view>
+    </view> -->
+    <view class="fgx_item"></view>
+    <view class='item-cont' hover-class='btn-hover' bindtap='Bindtel'>
+      <view class='item-cont-img'><image src='../img/images/Icon_04.png'></image></view>
+      <text class='item-cont-text'>客服电话</text>
+      <text class='item-cont-name'>400-602-1868</text>
+      <view class='item-cont-icon'><image src='../img/rightIcon.png'></image></view>
+    </view>
+    <view class='item-cont' open-type="contact" hover-class='btn-hover' bindtap='kf'>
+      <button open-type="contact" class='item-cont-btn'></button>
+      <view class='item-cont-img'><image src='../img/images/Icon_06.png'></image></view>
+      <text class='item-cont-text'>与找样本聊聊</text>
+      <view class='item-cont-icon'><image src='../img/rightIcon.png'></image></view>
+    </view>
+    <view class='item-cont' hover-class='btn-hover' bindtap='merberLit' data-titleName='帮助' data-index='105'>
+      <view class='item-cont-img'><image src='../img/images/Icon_05.png'></image></view>
+      <text class='item-cont-text'>帮助</text>
+      <text class='item-cont-name'></text>
+      <view class='item-cont-icon'><image src='../img/rightIcon.png'></image></view>
+    </view>
+
+    <view class="fgx_item"></view>
+    <view class='item-cont'  hover-class='btn-hover' bindtap='outLogin'>
+      <view class='item-cont-img'><image src='../img/images/Icon_07.png'></image></view>
+      <text class='item-cont-text'>切换账户</text>
+      <text class='item-cont-name'>{{untel}}</text>
+      <view class='item-cont-icon'><image src='../img/rightIcon.png'></image></view>
+    </view>
+  </view> 
+  <view class='shareWrap'>
+    <button class='shareBtn' open-type="share">点击推荐给好友</button>
+  </view>
+</view>
